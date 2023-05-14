@@ -1,39 +1,41 @@
 <template>
-  <article class="museum-highlight">
+  <article class="highlight">
+    <div class="highlight-header">
+      <div
+        v-html="highlight.badge"
+        class="highlight-header__badge"
+      />
+      <img
+        class="highlight-header__image"
+        :src="
+          highlight.image?.source
+            ? highlight.image?.source
+            : `https://source.unsplash.com/random/?${stripSpaces(highlight.name)}`
+        "
+        :alt="highlight.image?.alt"
+      />
+    </div>
     <div
-      v-html="highlight.badge"
-      class="museum-highlight__badge"
-    />
-    <img
-      class="museum-highlight__image"
-      :src="
-        highlight.image?.source
-          ? highlight.image?.source
-          : `https://source.unsplash.com/random/?${stripSpaces(highlight.name)}`
-      "
-      :alt="highlight.image?.alt"
-    />
-    <div
-      class="museum-highlight-body"
-      :class="{ 'museum-highlight-body--partner': highlight.isPartner }"
+      class="highlight-body"
+      :class="{ 'highlight-body--partner': highlight.isPartner }"
     >
-      <h2 class="museum-highlight-body__name">{{ highlight?.name }}</h2>
-      <p class="museum-highlight-body__date">
+      <h2 class="highlight-body__name">{{ highlight?.name }}</h2>
+      <p class="highlight-body__date">
         Posted <time :datetime="highlight.date">{{ formatDate(highlight.date) }}</time>
       </p>
-      <p class="museum-highlight-body__description">
+      <p class="highlight-body__description">
         {{ highlight?.description }}
       </p>
       <div
         v-if="highlight.news"
-        class="museum-highlight-body__news"
+        class="highlight-body__news"
       >
         <strong>{{ newsDate }}</strong>
         <p>{{ highlight.news.title }}</p>
       </div>
       <div
         v-if="uniqueData.length"
-        class="museum-highlight-body__additional"
+        class="highlight-body__additional"
       >
         <h3>More Info:</h3>
         <div
@@ -115,10 +117,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.museum-highlight {
+.highlight {
   position: relative;
   display: flex;
   flex-direction: column;
+}
+.highlight-header {
   &__badge {
     position: absolute;
     top: -1rem;
@@ -134,7 +138,7 @@ export default {
     object-position: center;
   }
 }
-.museum-highlight-body {
+.highlight-body {
   flex: 1;
   padding: 1em;
   background: var(--clr-card-primary);
