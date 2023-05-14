@@ -70,15 +70,18 @@ export default {
     },
     uniqueData() {
       let relatedData = [];
-      const categoryType = this.highlight.uniqueData[this.highlight.type];
-      Object.keys(categoryType).forEach((key) => {
-        if (categoryType[key]) {
-          relatedData.push({
-            name: key,
-            value: categoryType[key],
-          });
-        }
-      });
+      const categoryType = this.highlight?.uniqueData[this.highlight.type];
+      if (categoryType) {
+        Object.keys(categoryType).forEach((key) => {
+          if (categoryType[key]) {
+            relatedData.push({
+              name: key,
+              value: categoryType[key],
+            });
+          }
+        });
+      }
+
       return relatedData;
     },
   },

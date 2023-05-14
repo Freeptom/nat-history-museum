@@ -97,7 +97,7 @@ export default {
             space: {
               quiz: item?.quiz ?? null,
             },
-            dinosaur: {
+            dinosaurs: {
               period: item?.period ?? null,
             },
             wildlife: {
