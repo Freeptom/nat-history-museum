@@ -123,6 +123,8 @@ export default {
   flex-direction: column;
 }
 .highlight-header {
+  display: flex;
+  flex-direction: column;
   &__badge {
     position: absolute;
     top: -1rem;
