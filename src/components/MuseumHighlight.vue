@@ -46,7 +46,7 @@
             <a :href="item.value"> {{ item.value }}</a>
           </template>
           <template v-else>
-            {{ item.value }}
+            <div>{{ item.value }}</div>
           </template>
         </div>
       </div>
